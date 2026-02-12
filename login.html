@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="hi" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+
+    <title>
+      Login — GAURAVI iHEALTH DIAGNOSTICS | Home Sample Collection & Lab Tests
+    </title>
+    <meta
+      name="description"
+      content="Login to GAURAVI iHEALTH DIAGNOSTICS to manage your lab test bookings, view reports and track home sample collection."
+    />
+    <meta name="application-name" content="GAURAVI iHEALTH DIAGNOSTICS" />
+    <link rel="canonical" href="https://example.com/login" />
+    <meta name="theme-color" content="#7b2cbf" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/Inter-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      .auth-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .auth-main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+      }
+      .auth-card {
+        max-width: 420px;
+        width: 100%;
+        margin: 2rem auto 3rem;
+      }
+      .auth-footer-text {
+        text-align: center;
+        margin-top: 0.75rem;
+      }
+      .auth-meta {
+        text-align: center;
+        margin-top: 0.75rem;
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      .skip-link:focus {
+        position: static;
+        left: auto;
+        width: auto;
+        height: auto;
+        padding: 0.5rem;
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 8px 28px rgba(11, 11, 13, 0.08);
+      }
+    </style>
+  </head>
+  <body class="auth-wrapper" data-ab-variant="A">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="GAURAVI iHEALTH DIAGNOSTICS Home"
+          >GAURAVI iHEALTH DIAGNOSTICS</a
+        >
+
+        <nav class="primary" role="navigation" aria-label="Primary navigation">
+          <ul class="nav-list" role="menubar">
+            <li role="none"></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a class="ghost small" href="signup.html">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- breadcrumb removed as requested -->
+    </header>
+
+    <!-- MAIN -->
+    <main id="main" class="container auth-main" role="main">
+      <section class="card auth-card" aria-labelledby="loginHeading">
+        <h1 id="loginHeading">Login to GAURAVI</h1>
+        <p class="muted small">
+          Apne bookings, reports aur profile ko ek jagah se manage karein.
+        </p>
+
+        <form
+          id="loginForm"
+          class="booking-form"
+          method="post"
+          action="/api/auth/login"
+          novalidate
+        >
+          <input type="hidden" name="csrf_token" value="{{CSRF_TOKEN}}" />
+
+          <label for="loginPhoneOrEmail">Mobile number ya email</label>
+          <input
+            id="loginPhoneOrEmail"
+            name="loginPhoneOrEmail"
+            type="text"
+            required
+            autocomplete="username"
+            placeholder="9876543210 ya email@domain.com"
+          />
+
+          <label for="loginPassword">Password</label>
+          <input
+            id="loginPassword"
+            name="password"
+            type="password"
+            required
+            minlength="6"
+            autocomplete="current-password"
+            placeholder="Password"
+          />
+
+          <div class="small muted" style="margin-top: 0.25rem">
+            <label>
+              <input type="checkbox" name="remember" />
+              Keep me logged in (shared device par off rakhein)
+            </label>
+          </div>
+
+          <div
+            class="form-actions"
+            style="
+              margin-top: 0.75rem;
+              display: flex;
+              gap: 0.5rem;
+              flex-wrap: wrap;
+            "
+          >
+            <button type="submit" class="btn" id="loginBtn">Login</button>
+
+            <a href="#" class="ghost small" id="forgotPasswordLink">
+              Forgot password?
+            </a>
+          </div>
+        </form>
+
+        <p class="auth-footer-text muted small">
+          Naye user ho? <a href="signup.html">Sign Up</a> karke GAURAVI iHEALTH
+          DIAGNOSTICS join karein.
+        </p>
+
+        <p class="auth-meta">
+          Demo only — backend / authentication logic implement karna baaki hai.
+        </p>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container muted small">
+        © <time datetime="2025">2025</time> GAURAVI iHEALTH DIAGNOSTICS — Demo.
+      </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+    <script>
+      (function () {
+        const form = document.getElementById("loginForm");
+        const btn = document.getElementById("loginBtn");
+        function showError(msg) {
+          let el = document.getElementById("loginError");
+          if (!el) {
+            el = document.createElement("div");
+            el.id = "loginError";
+            el.className = "form-errors muted small";
+            form.parentNode.insertBefore(el, form);
+          }
+          el.hidden = false;
+          el.textContent = msg;
+        }
+        form.addEventListener("submit", async function (ev) {
+          ev.preventDefault();
+          if (btn) btn.disabled = true;
+          const identifier = (
+            document.getElementById("loginPhoneOrEmail").value || ""
+          ).trim();
+          const password = document.getElementById("loginPassword").value || "";
+          if (!identifier || !password) {
+            showError("Enter identifier and password");
+            if (btn) btn.disabled = false;
+            return;
+          }
+          try {
+            const res = await fetch("/api/auth/login", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ identifier, password }),
+            });
+            const json = await res.json().catch(() => ({}));
+            if (!res.ok) {
+              showError(
+                json && json.error
+                  ? json.error
+                  : "Login failed (HTTP " + res.status + ")",
+              );
+              if (btn) btn.disabled = false;
+              return;
+            }
+            // success - redirect to lab-test.html
+            window.location.href = "lab-test.html";
+          } catch (e) {
+            showError("Network error");
+            if (btn) btn.disabled = false;
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

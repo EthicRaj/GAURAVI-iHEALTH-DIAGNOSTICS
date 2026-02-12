@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="hi" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+
+    <title>Book a Test — BloodLab | Home Sample Collection & Lab Tests</title>
+    <meta
+      name="description"
+      content="Book diagnostic lab tests at home with BloodLab. Fast home sample collection, certified technicians, secure online payment and detailed reports."
+    />
+    <meta
+      name="keywords"
+      content="lab test, blood test, book test online, home sample collection, health checkup, pathology, diagnostic lab"
+    />
+    <meta
+      name="robots"
+      content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="application-name" content="BloodLab" />
+
+    <link rel="canonical" href="https://example.com/book-a-test" />
+    <link
+      rel="alternate"
+      href="https://example.com/book-a-test"
+      hreflang="hi-IN"
+    />
+    <link
+      rel="alternate"
+      href="https://example.com/en/book-a-test"
+      hreflang="en-IN"
+    />
+    <meta name="theme-color" content="#7b2cbf" />
+
+    <!-- Favicon / icons (placeholders, replace in prod) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Book a Test — BloodLab" />
+    <meta
+      property="og:description"
+      content="Book diagnostic tests at home — quick slots, certified technicians, secure payments."
+    />
+    <meta property="og:image" content="https://example.com/hero.jpg" />
+    <meta property="og:url" content="https://example.com/book-a-test" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Perf & Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/Inter-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- CSS file (full theme in styles.css) -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Minimal inline critical CSS (for FOUC) -->
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      .skip-link:focus {
+        position: static;
+        left: auto;
+        width: auto;
+        height: auto;
+        padding: 0.5rem;
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 8px 28px rgba(11, 11, 13, 0.08);
+      }
+    </style>
+
+    <!-- Structured Data: Org + MedicalBusiness + BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "BloodLab",
+            "url": "https://example.com",
+            "logo": "https://example.com/logo.png"
+          },
+          {
+            "@type": "MedicalBusiness",
+            "name": "BloodLab",
+            "image": "https://example.com/hero.jpg",
+            "telephone": "+91-1234567890",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Mumbai",
+              "addressRegion": "MH",
+              "postalCode": "400001",
+              "addressCountry": "IN"
+            },
+            "serviceType": ["HomeSampleCollection", "DiagnosticTests"]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": { "@id": "https://example.com", "name": "Home" }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@id": "https://example.com/book-a-test",
+                  "name": "Book a Test"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body data-ab-variant="A">
+    <!-- Accessibility skip link -->
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- Offline banner (controlled by JS) -->
+    <div id="offlineBanner" class="offline-banner" hidden aria-live="polite">
+      You appear to be offline — booking will be saved and synced when you are
+      online.
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="BloodLab Home">GAURAVI iHEALTH DIAGNOSTICS</a>
+
+        <nav class="primary" role="navigation" aria-label="Primary navigation">
+          <ul class="nav-list" role="menubar">
+            <li role="none"><a role="menuitem" href="/">Home</a></li>
+            <li role="none"><a role="menuitem" href="#tests">Tests</a></li>
+            <li role="none"><a role="menuitem" href="#book">Book</a></li>
+            <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- UPDATED HEADER ACTIONS WITH LOGIN / SIGN UP -->
+        <div class="header-actions">
+          <label for="lang" class="sr-only">Language</label>
+          <select id="lang" aria-label="Language switcher" title="Language">
+            <option value="hi">हिन्दी</option>
+            <option value="en">English</option>
+            <option value="hi-lat">Hindi (Latin)</option>
+          </select>
+
+
+
+          <!-- New auth buttons -->
+          <a class="ghost small" href="login.html">Login</a>
+          <a class="btn small" href="signup.html">Sign Up</a>
+
+          <!-- Existing CTA -->
+          <a class="btn small" href="#book">Book a Test</a>
+        </div>
+      </div>
+
+
+    <!-- MAIN -->
+    <main id="main" class="container" role="main">
+      <!-- HERO -->
+      <section class="hero card" aria-labelledby="heroTitle">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 id="heroTitle">Book Blood Tests — ghar baithe</h1>
+            <p class="lead">
+              Fast home collection • Certified labs • Secure payments
+            </p>
+
+            <!-- Trust indicators -->
+            <p class="muted small" aria-label="Trust badges">
+              <span>✔ NABL-like accredited labs (demo)</span> •
+              <span>✔ Home collection in 60+ cities</span> •
+              <span>✔ SMS & WhatsApp updates</span>
+            </p>
+
+<!-- Quick actions / smart booking -->
+<form
+  id="quickSearch"
+  class="search-inline hero-quick-row"
+  role="group"
+  aria-label="Quick booking actions"
+  onsubmit="return false;"
+>
+  <!-- City select -->
+  <div class="hero-quick-field">
+    <label for="citySelect" class="small hero-quick-label">
+      Service city
+    </label>
+    <select
+      id="citySelect"
+      aria-label="Choose city for home collection"
+      autocomplete="address-level2"
+    >
+      <option value="">Select city</option>
+      <option value="Nanded">Nanded</option>
+      <option value="Hadgaon">Hadgaon</option>
+      <option value="Kinwat">Kinwat</option>
+      <option value="Bhokar">Bhokar</option>
+      <option value="Mudkhed">Mudkhed</option>
+      <option value="Himayatnagar">Himayatnagar</option>
+      <option value="Mahurgad">Mahurgad</option>
+      <option value="Naigaon">Naigaon</option>
+      <option value="Umarkhed">Umarkhed</option>
+      <option value="Dharmabad">Dharmabad</option>
+      <option value="Biloli">Biloli</option>
+      <option value="Loha">Loha</option>
+      <option value="Kandhar">Kandhar</option>
+      <option value="Deglur">Deglur</option>
+      <option value="Mukhed">Mukhed</option>
+    </select>
+  </div>
+
+  <!-- Concern / purpose -->
+  <div class="hero-quick-field">
+    <label for="heroPurpose" class="small hero-quick-label">
+      Health concern
+    </label>
+    <select
+      id="heroPurpose"
+      aria-label="Select health concern"
+    >
+      <option value="general">General health checkup</option>
+      <option value="diabetes">Diabetes / Sugar</option>
+      <option value="thyroid">Thyroid</option>
+      <option value="fever">Fever / Viral</option>
+      <option value="covid">COVID symptoms</option>
+    </select>
+  </div>
+
+  <!-- Hero quick actions -->
+  <div class="hero-quick-actions">
+    <button
+      type="button"
+      class="btn small"
+      id="heroQuickBook"
+    >
+      Quick book tests
+    </button>
+
+    <button
+      type="button"
+      class="ghost small"
+      id="heroViewTests"
+    >
+      View all tests
+    </button>
+  </div>
+</form>
+
+            <div class="hero-features">
+              <span class="pill">Home collection</span>
+              <span class="pill">Same-day reports</span>
+              <span class="pill">Certified technicians</span>
+            </div>
+          </div>
+
+          <div class="hero-media">
+            <picture>
+              <source
+                srcset="/hero-800.webp"
+                type="image/webp"
+                media="(min-width:600px)"
+              />
+              <source srcset="/hero-400.webp" type="image/webp" />
+              <img
+                src="hero-800.webp"
+                alt="Lab technician collecting blood sample at home"
+                loading="lazy"
+                decoding="async"
+                width="520"
+                height="360"
+                style="border-radius: 10px; max-width: 100%"
+              />
+            </picture>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why GAURAVI -->
+      <section class="card why-section" aria-labelledby="whyHeading">
+        <div class="section-header">
+          <h2 id="whyHeading">Why book with GAURAVI ?</h2>
+          <p class="muted small">
+        Designed for home sample collection and digital-first experience.
+          </p>
+        </div>
+        <div class="why-grid">
+          <article>
+        <h3>Home sample collection</h3>
+        <p class="muted small">
+          Trained phlebotomists visit your home with proper sanitization and
+          safety protocols.
+        </p>
+        <ul class="muted small">
+          <li>Flexible morning & evening slots as per your convenience.</li>
+          <li>Properly labelled samples with tamper-evident containers.</li>
+          <li>
+            Technicians follow gloves, mask & hand-sanitization protocol
+            (demo).
+          </li>
+        </ul>
+          </article>
+
+          <article>
+        <h3>Transparent pricing</h3>
+        <p class="muted small">
+          Indicative prices shown upfront (demo). Final bill shared before
+          collection.
+        </p>
+        <ul class="muted small">
+          <li>
+            No surprise home-collection charges shown at the last step.
+          </li>
+          <li>
+            Combo health packages for routine check-ups and chronic care.
+          </li>
+          <li>Digital payment receipts sent instantly on SMS / email.</li>
+        </ul>
+          </article>
+
+          <article>
+        <h3>Digital reports & data safety</h3>
+        <p class="muted small">
+          Secure reports available on email/SMS link. Easy to share with
+          your doctor.
+        </p>
+        <ul class="muted small">
+          <li>Downloadable PDF reports, easy to print or forward.</li>
+          <li>
+            Access history of past reports from the same number (demo
+            behaviour).
+          </li>
+          <li>
+            Your medical data is processed only for diagnostic and reporting
+            purposes.
+          </li>
+        </ul>
+          </article>
+        </div>
+
+        <p class="muted small">
+          <strong></strong> 
+          <strong>Safety assurance:</strong> All samples are collected using
+          sterilized equipment and processed in certified partner laboratories
+          following strict quality protocols.
+        </p>
+      </section>
+
+      <!-- SPLIT LAYOUT -->
+      
+      <section class="split-layout" id="book">
+        <!-- LEFT: Filters + Tests -->
+        <div class="content-col">
+          <div class="toolbar card" role="region" aria-label="Filters">
+            <div class="flex-row">
+              <label for="filterCategory" class="sr-only"
+          >Filter by category</label
+              >
+              <select id="filterCategory" aria-label="Filter by category">
+          <option value="all">All categories</option>
+          <option value="blood">Blood Tests</option>
+          <option value="panels">Panels</option>
+          <option value="imaging">Imaging</option>
+          <option value="rapid">Rapid / Fever</option>
+          <option value="special">Advanced / Cancer</option>
+              </select>
+
+              <label for="priceRange" class="sr-only">Filter by price</label>
+              <select id="priceRange" aria-label="Filter by price">
+          <option value="any">All Price Ranges</option>
+          <option value="0-499">Below ₹500</option>
+          <option value="500-999">₹500 - ₹999</option>
+          <option value="1000+">₹1000+</option>
+              </select>
+
+              <div id="searchStatus" class="muted small" aria-live="polite">
+          Showing popular tests
+              </div>
+            </div>
+          </div>
+
+          <section
+            id="tests"
+            class="tests card"
+            aria-labelledby="testsHeading"
+            data-component="tests-list"
+            data-tracking-scope="tests"
+          >
+<header class="section-header">
+  <h2 id="testsHeading">Tests & Panels</h2>
+  <p class="muted small">
+    Choose individual tests or health packages. Prices are indicative (demo).
+  </p>
+
+  <!-- ===== Symptoms quick filters ===== -->
+  <div class="symptom-filters" role="tablist" aria-label="Quick symptom filters">
+    <button type="button" class="symptom-btn" data-symptom="all" aria-pressed="true">Show all</button>
+    <button type="button" class="symptom-btn" data-symptom="fever">Fever / Viral</button>
+    <button type="button" class="symptom-btn" data-symptom="diabetes">Diabetes / Sugar</button>
+    <button type="button" class="symptom-btn" data-symptom="thyroid">Thyroid</button>
+    <button type="button" class="symptom-btn" data-symptom="heart">Heart</button>
+    <button type="button" class="symptom-btn" data-symptom="pregnancy">Pregnancy</button>
+    <button type="button" class="symptom-btn" data-symptom="full">Full body</button>
+  </div>
+
+  <!-- Tag cloud (keep as-is) -->
+  <div class="test-tag-cloud" aria-label="All available test types" style="margin-top:0.8rem;">
+    <!-- existing test-tag buttons remain here -->
+  </div>
+</header>
+
+            <!-- dynamic categories/tests container -->
+            <div
+              id="testsContainer"
+              class="categories"
+              aria-live="polite"
+              data-loaded="false"
+            >
+              <!-- skeletons shown while JS renders -->
+              <div class="skeleton-grid" aria-hidden="true">
+          <div
+            class="skeleton"
+            style="height: 72px; border-radius: 10px"
+          ></div>
+          <div
+            class="skeleton"
+            style="height: 72px; border-radius: 10px"
+          ></div>
+          <div
+            class="skeleton"
+            style="height: 72px; border-radius: 10px"
+          ></div>
+              </div>
+            </div>
+
+            <!-- Templates for JS -->
+            <template id="categoryTemplate">
+              <details class="category" open>
+          <summary><strong class="categoryTitle"></strong></summary>
+          <div class="test-grid" role="list"></div>
+              </details>
+            </template>
+
+            <template id="testTemplate">
+              <article class="test-card" role="listitem" data-test-card>
+          <div class="test-card-left">
+            <h3 class="test-name"></h3>
+            <p class="test-desc muted small"></p>
+          </div>
+          <div class="test-card-right">
+            <div class="price">₹<span class="price-value">0</span></div>
+            <div class="actions">
+              <button
+                class="ghost details-btn"
+                type="button"
+                aria-haspopup="dialog"
+                aria-controls="testDetailsDialog"
+              >
+                Details
+              </button>
+              <button
+                class="btn add-btn"
+                type="button"
+                data-action="add-test"
+                data-field="add-to-cart"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+              </article>
+            </template>
+          </section>
+
+
+
+        <!-- RIGHT: Booking panel -->
+        <aside
+          class="panel-col card sticky"
+          aria-labelledby="bookingHeading"
+          data-component="booking-panel"
+        >
+          <h2 id="bookingHeading">Your Booking</h2>
+
+          <!-- Step indicator -->
+          <ol class="step-indicator small" aria-hidden="true">
+            <li class="active" data-step="1">Tests</li>
+            <li data-step="2">Details</li>
+            <li data-step="3">Confirm</li>
+          </ol>
+
+          <!-- Error summary placeholder -->
+          <section
+            id="formErrors"
+            class="form-errors muted small"
+            role="alert"
+            aria-live="assertive"
+            hidden
+          ></section>
+
+          <!-- Status / success message placeholder -->
+          <section
+            id="formStatus"
+            class="form-status muted small"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></section>
+
+          <form
+            id="bookingForm"
+            class="booking-form step-1"
+            method="post"
+            action="/api/submitBooking"
+            enctype="multipart/form-data"
+            novalidate
+            data-component="booking-form"
+          >
+            <!-- server-side hooks -->
+            <input type="hidden" name="csrf_token" value="{{CSRF_TOKEN}}" />
+            <input
+              type="hidden"
+              name="booking_source"
+              value="web:professional"
+            />
+            <input
+              type="hidden"
+              name="uploaded_report_url"
+              id="uploaded_report_url"
+              value=""
+            />
+            <input type="hidden" name="subtotal" id="subtotalInput" value="0" />
+            <input type="hidden" name="discount" id="discountInput" value="0" />
+            <input type="hidden" name="total" id="totalInput" value="0" />
+            <input
+              type="hidden"
+              name="utm_campaign"
+              id="utmCampaign"
+              value=""
+            />
+            <input type="hidden" name="referrer" id="referrer" value="" />
+
+            <!-- Cart summary -->
+            <div id="cartSummary" class="cart-summary" aria-live="polite">
+              <div class="cart-empty muted">No tests selected.</div>
+              <ul id="cartList" role="list" class="cart-list"></ul>
+            </div>
+
+            <!-- Patient details -->
+            <fieldset class="field-group" data-step="2">
+              <legend>Patient details</legend>
+
+              <div class="small muted">
+                <label>
+                  <input type="radio" name="patientType" value="self" checked />
+                  Self
+                </label>
+                <label>
+                  <input type="radio" name="patientType" value="other" />
+                  Family member
+                </label>
+              </div>
+
+                <label for="city" class="small">City</label>
+                <select
+                  id="city"
+                  name="city"
+                  required
+                  aria-required="true"
+                  autocomplete="address-level2"
+                  data-field="city"
+                >
+                  <option value="">Select Taluka</option>
+
+                  <!-- Nanded District Talukas -->
+                  <option value="Nanded">Nanded</option>
+                  <option value="Ardhapur">Ardhapur</option>
+                  <option value="Biloli">Biloli</option>
+                  <option value="Bhokar">Bhokar</option>
+                  <option value="Deglur">Deglur</option>
+                  <option value="Dharmabad">Dharmabad</option>
+                  <option value="Hadgaon">Hadgaon</option>
+                  <option value="Himayatnagar">Himayatnagar</option>
+                  <option value="Kandhar">Kandhar</option>
+                  <option value="Kinwat">Kinwat</option>
+                  <option value="Loha">Loha</option>
+                  <option value="Mahur">Mahur</option>
+                  <option value="Mudkhed">Mudkhed</option>
+                  <option value="Mukhed">Mukhed</option>
+                  <option value="Naigaon (Khairgaon)">Naigaon (Khairgaon)</option>
+                  <option value="Umri">Umri</option>
+                </select>
+                <!-- JS will inject the full city list -->
+              </select>
+
+              <label for="fullname">Full name</label>
+              <input
+                id="fullname"
+                name="fullname"
+                type="text"
+                required
+                minlength="3"
+                placeholder="Ram Kumar"
+                autocomplete="name"
+                data-field="name"
+              />
+
+              <div class="grid-2">
+                <div>
+                  <label for="age">Age</label>
+                  <input
+                    id="age"
+                    name="age"
+                    type="number"
+                    min="0"
+                    max="120"
+                    inputmode="numeric"
+                    placeholder="30"
+                    autocomplete="off"
+                    data-field="age"
+                  />
+                </div>
+                <div>
+                  <label for="gender">Gender</label>
+                  <select id="gender" name="gender" data-field="gender">
+                    <option value="">Select</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <label for="phone">Mobile number</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                pattern="^[6-9]\\d{9}$"
+                inputmode="tel"
+                required
+                placeholder="9876543210"
+                autocomplete="tel-national"
+                data-field="phone"
+                aria-describedby="phoneHelp"
+              />
+              <p id="phoneHelp" class="muted small">
+                10-digit Indian mobile number.
+              </p>
+
+              <div id="otpRow" class="hidden" aria-hidden="true">
+                <label for="otp">OTP</label>
+                <div style="display: flex; gap: 0.5rem">
+                  <input
+                    id="otp"
+                    name="otp"
+                    inputmode="numeric"
+                    maxlength="6"
+                    placeholder="Enter OTP"
+                    autocomplete="one-time-code"
+                  />
+                  <button type="button" id="resendOtp" class="ghost">
+                    Resend
+                  </button>
+                </div>
+                <div id="otpMsg" class="muted small" aria-live="polite"></div>
+              </div>
+            </fieldset>
+
+            <!-- Booking details -->
+            <fieldset class="field-group" data-step="2">
+              <legend>Booking details</legend>
+
+              <div class="small muted">
+                <label>
+                  <input
+                    type="radio"
+                    name="collectionType"
+                    value="home"
+                    checked
+                  />
+                  Home collection
+                </label>
+                <label>
+                  <input type="radio" name="collectionType" value="center" />
+                  Visit lab
+                </label>
+              </div>
+
+              <div class="grid-2">
+                <div>
+                  <label for="slotDate">Preferred date</label>
+                  <input
+                    id="slotDate"
+                    name="slotDate"
+                    type="date"
+                    required
+                    min=""
+                    data-field="slotDate"
+                  />
+                </div>
+                <div>
+                  <label for="slotTime">Time slot</label>
+                  <select
+                    id="slotTime"
+                    name="slotTime"
+                    required
+                    data-field="slotTime"
+                  >
+                    <option value="">Loading slots...</option>
+                  </select>
+                </div>
+              </div>
+
+              <label for="fasting" class="small">Fasting status</label>
+              <select id="fasting" name="fasting" aria-label="Fasting status">
+                <option value="">Select (if applicable)</option>
+                <option value="fasting">Fasting (8–10 hours)</option>
+                <option value="non-fasting">Non-fasting</option>
+              </select>
+
+              <label for="report">Upload previous report (optional)</label>
+              <input
+                id="report"
+                name="report"
+                type="file"
+                accept=".pdf,.jpg,.jpeg,.png"
+                data-upload-url="/api/upload/presign"
+                aria-describedby="reportHelp"
+              />
+              <div id="reportHelp" class="muted small">
+                Max 10MB. PDF preferred.
+              </div>
+              <div id="reportPreview" class="muted small" aria-live="polite">
+                No file chosen.
+              </div>
+
+              <p class="muted small">
+                <strong>Estimated report time:</strong>
+                <span id="etaLabel"
+                  >24–48 hours (depends on selected tests)</span
+                >
+              </p>
+            </fieldset>
+
+            <!-- Consent & offers -->
+            <fieldset class="field-group" data-step="3">
+              <legend>Consent & offers</legend>
+
+              <label class="small" style="margin-top: 0.25rem">
+                <input type="checkbox" name="consent" required />
+                I consent to processing my medical data for diagnostic testing.
+              </label>
+
+              <div class="voucher" style="margin-top: 0.5rem">
+                <input
+                  id="promo"
+                  name="promo"
+                  placeholder="Promo code"
+                  autocomplete="off"
+                />
+                <button type="button" id="applyPromoBtn" class="ghost">
+                  Apply
+                </button>
+              </div>
+              <div
+                id="promoMessage"
+                class="muted small"
+                aria-live="polite"
+              ></div>
+            </fieldset>
+
+            <!-- Summary -->
+            <section class="summary" aria-live="polite" data-step="3">
+              <div class="summary-row">
+                <span>Subtotal</span><span id="subtotal">₹0</span>
+              </div>
+              <div class="summary-row">
+                <span>Discount</span><span id="discount">₹0</span>
+              </div>
+              <div class="summary-row total">
+                <strong>Total</strong><strong id="total">₹0</strong>
+              </div>
+            </section>
+
+            <div
+              class="form-actions"
+              style="
+                display: flex;
+                gap: 0.5rem;
+                margin-top: 0.5rem;
+                flex-wrap: wrap;
+              "
+            >
+              <button type="submit" class="btn" id="confirmBtn">
+                Confirm & Continue
+              </button>
+              <button type="button" id="clearCart" class="ghost">Clear</button>
+              <button type="button" id="openTerms" class="ghost">
+                View Terms
+              </button>
+            </div>
+
+            <p class="muted small" style="margin-top: 0.5rem">
+              By booking you agree to our <a href="/terms">terms</a> and
+              <a href="/privacy">privacy</a>.
+            </p>
+          </form>
+        </aside>
+      </section>
+    </main>
+          <!-- OWNER RIGHTS & CONTACT – FULL-WIDTH (hero ke barabar) -->
+      <section class="card owner-card" aria-labelledby="ownerHeading">
+        <div class="owner-inner">
+          <div class="owner-left">
+            <h3 id="ownerHeading">Owner Rights & Contact</h3>
+            <div class="owner-details">
+              <div><strong>Lab Name:</strong> GAURAVI iHEALTH DIAGNOSTICS</div>
+              <div><strong>Owner:</strong> Satish Fulari</div>
+              <div><strong>Location:</strong> Nanded, Maharashtra</div>
+              <div><strong>Timing:</strong> 7:00 AM – 9:00 PM (Mon–Sun)</div>
+            </div>
+          </div>
+
+          <div class="owner-right">
+            <div class="owner-details">
+              <div><strong>Call:</strong> <a href="tel:+919112956936">+91 911295 6936</a></div>
+              <div><strong>Email:</strong> <a href="mailto:info@gauravihealth.com">info@gauravihealth.com</a></div>
+              <div><strong>WhatsApp:</strong> <a href="https://wa.me/919112956936" target="_blank">Chat on WhatsApp</a></div>
+            </div>
+
+            <div class="owner-actions">
+              <a href="tel:+919112956936" class="ghost small">Call Now</a>
+              <a href="https://wa.me/919112956936" target="_blank" class="btn small whatsapp-btn">
+                WhatsApp Booking
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="contact" role="contentinfo">
+      <div class="container muted small">
+        © <time datetime="2025">2025</time> BloodLab — Demo. Images & content
+        are placeholders.
+        <span class="footer-meta"
+          >Environment: <span data-env="demo">Demo</span></span
+        >
+      </div>
+    </footer>
+
+    <!-- Test details dialog (accessible) -->
+    <dialog
+      id="testDetailsDialog"
+      aria-labelledby="testDetailsTitle"
+      aria-modal="true"
+    >
+      <div class="dialog-inner">
+        <h3 id="testDetailsTitle">Test details</h3>
+        <div id="testDetailsBody" class="muted small"></div>
+        <div style="margin-top: 1rem; text-align: right">
+          <button id="closeTestDetails" class="btn">Close</button>
+        </div>
+      </div>
+    </dialog>
+
+    <noscript>
+      <div class="container card">
+        <p class="muted">
+          JavaScript disabled — limited functionality. Enable JavaScript for the
+          full experience.
+        </p>
+      </div>
+    </noscript>
+
+    <!-- Floating help button -->
+    <a href="tel:+911234567890" class="help-fab" aria-label="Call support">
+      ?
+    </a>
+
+    <!-- API Configuration and App script -->
+    <script src="api-config.js"></script>
+    <script src="app.js" defer></script>
+
+    <!-- Service worker registration (commented; implement sw.js then enable) -->
+    <!--
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(e => console.warn('SW registration failed', e));
+    }
+  </script>
+  -->
+
+<!-- Floating Mini-Cart (paste near end of body) -->
+<div id="floatingCart" class="floating-cart hidden right-collapsed" aria-hidden="true" aria-live="polite">
+  <div class="fc-panel">
+    <div class="fc-header">
+      <button id="floatingCartToggle" class="fc-toggle" aria-label="Toggle cart">🧾</button>
+      <div class="fc-title">Your Booking</div>
+      <button id="fcClose" class="fc-close" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="fc-body">
+      <ul id="fcList" class="fc-list" role="list"></ul>
+      <div class="fc-empty muted">No tests selected.</div>
+    </div>
+
+    <div class="fc-footer">
+      <div class="fc-subtotal">Subtotal: <strong id="fcSubtotal">₹0</strong></div>
+      <div class="fc-actions">
+        <button id="fcCheckout" class="btn small">Go to Booking</button>
+        <button id="fcDone" class="btn small">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

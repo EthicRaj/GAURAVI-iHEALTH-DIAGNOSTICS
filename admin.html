@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BloodLab Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin-styles.css" />
+  </head>
+  <body>
+    <!-- Admin Navbar -->
+    <nav class="admin-navbar">
+      <div class="admin-nav-container">
+        <div class="admin-logo">
+          <h1>🏥 BloodLab Admin</h1>
+        </div>
+        <div class="admin-nav-menu">
+          <button class="nav-btn active" data-section="dashboard">
+            Dashboard
+          </button>
+          <button class="nav-btn" data-section="users">Users Management</button>
+          <button class="nav-btn" data-section="bookings">Bookings</button>
+          <button class="nav-btn" data-section="tests">Tests</button>
+          <button class="nav-btn" data-section="reports">Reports</button>
+        </div>
+        <div class="admin-profile">
+          <span class="admin-name">Admin User</span>
+          <button class="logout-btn" onclick="logoutAdmin()">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="admin-container">
+      <aside class="admin-sidebar">
+        <div class="sidebar-menu">
+          <button class="sidebar-item active" data-section="dashboard">
+            📊 Dashboard
+          </button>
+          <button class="sidebar-item" data-section="users">
+            👥 Users Management
+          </button>
+          <button class="sidebar-item" data-section="bookings">
+            📅 Bookings
+          </button>
+          <button class="sidebar-item" data-section="tests">🔬 Tests</button>
+          <button class="sidebar-item" data-section="reports">
+            📈 Analytics & Reports
+          </button>
+          <button class="sidebar-item" data-section="settings">
+            ⚙️ Settings
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="admin-main">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="admin-section active">
+          <div class="section-header">
+            <h2>Dashboard Overview</h2>
+            <span class="date-today" id="dateToday"></span>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">👥</div>
+              <div class="stat-content">
+                <h3 id="totalUsers">0</h3>
+                <p>Total Users</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📅</div>
+              <div class="stat-content">
+                <h3 id="totalBookings">0</h3>
+                <p>Total Bookings</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">💰</div>
+              <div class="stat-content">
+                <h3 id="totalRevenue">₹0</h3>
+                <p>Total Revenue</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⭐</div>
+              <div class="stat-content">
+                <h3 id="avgRating">4.5</h3>
+                <p>Average Rating</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-charts">
+            <div class="chart-container">
+              <h3>User Activity</h3>
+              <div id="activityChart" class="chart-placeholder">
+                Chart will load here
+              </div>
+            </div>
+            <div class="chart-container">
+              <h3>Revenue Trend</h3>
+              <div id="revenueChart" class="chart-placeholder">
+                Chart will load here
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Users Management Section -->
+        <section id="users" class="admin-section">
+          <div class="section-header">
+            <h2>Users Management</h2>
+            <button class="btn-primary" onclick="openAddUserModal()">
+              + Add New User
+            </button>
+          </div>
+
+          <div class="filter-bar">
+            <input
+              type="text"
+              id="searchUsers"
+              placeholder="Search by name, email, or phone..."
+              class="search-input"
+            />
+            <select id="filterStatus" class="filter-select">
+              <option value="">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Status</th>
+                  <th>Registation Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <!-- Users will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <button class="page-btn" id="prevBtn" onclick="previousPage()">
+              ← Previous
+            </button>
+            <span id="pageInfo">Page 1</span>
+            <button class="page-btn" id="nextBtn" onclick="nextPage()">
+              Next →
+            </button>
+          </div>
+        </section>
+
+        <!-- Bookings Section -->
+        <section id="bookings" class="admin-section">
+          <div class="section-header">
+            <h2>Bookings Management</h2>
+          </div>
+
+          <div class="filter-bar">
+            <input
+              type="text"
+              id="searchBookings"
+              placeholder="Search by booking ID or user..."
+              class="search-input"
+            />
+            <select id="filterBookingStatus" class="filter-select">
+              <option value="">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>User</th>
+                  <th>Test Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="bookingsTableBody">
+                <!-- Bookings will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Tests Section -->
+        <section id="tests" class="admin-section">
+          <div class="section-header">
+            <h2>Lab Tests Management</h2>
+            <button class="btn-primary" onclick="openAddTestModal()">
+              + Add New Test
+            </button>
+          </div>
+
+          <div class="filter-bar">
+            <input
+              type="text"
+              id="searchTests"
+              placeholder="Search tests..."
+              class="search-input"
+            />
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Test ID</th>
+                  <th>Test Name</th>
+                  <th>Price</th>
+                  <th>Description</th>
+                  <th>Popularity</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="testsTableBody">
+                <!-- Tests will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Reports Section -->
+        <section id="reports" class="admin-section">
+          <div class="section-header">
+            <h2>Analytics & Reports</h2>
+          </div>
+
+          <div class="reports-grid">
+            <div class="report-card">
+              <h3>📊 User Growth Report</h3>
+              <div id="userGrowthChart" class="chart-placeholder">
+                Chart will load
+              </div>
+            </div>
+            <div class="report-card">
+              <h3>💳 Payment Summary</h3>
+              <div id="paymentChart" class="chart-placeholder">
+                Chart will load
+              </div>
+            </div>
+            <div class="report-card">
+              <h3>🏆 Popular Tests</h3>
+              <div id="popularTests" class="chart-placeholder">
+                Data will load
+              </div>
+            </div>
+            <div class="report-card">
+              <h3>📈 Monthly Revenue</h3>
+              <div id="monthlyRevenue" class="chart-placeholder">
+                Chart will load
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="admin-section">
+          <div class="section-header">
+            <h2>Admin Settings</h2>
+          </div>
+
+          <div class="settings-form">
+            <div class="setting-group">
+              <label>Lab Name</label>
+              <input
+                type="text"
+                id="labName"
+                value="BloodLab"
+                class="form-input"
+              />
+            </div>
+            <div class="setting-group">
+              <label>Contact Email</label>
+              <input
+                type="email"
+                id="contactEmail"
+                value="admin@bloodlab.com"
+                class="form-input"
+              />
+            </div>
+            <div class="setting-group">
+              <label>Phone Number</label>
+              <input
+                type="tel"
+                id="contactPhone"
+                value="+91 9876543210"
+                class="form-input"
+              />
+            </div>
+            <div class="setting-group">
+              <label>Address</label>
+              <textarea id="address" class="form-input">
+123 Medical Street, Healthcare City</textarea
+              >
+            </div>
+            <button class="btn-primary" onclick="saveSettings()">
+              Save Settings
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add/Edit User Modal -->
+    <div id="userModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeUserModal()">&times;</span>
+        <h2 id="userModalTitle">Add New User</h2>
+        <form id="userForm" class="form-grid">
+          <input type="hidden" id="userId" />
+
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="userName" required class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="userEmail" required class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Phone *</label>
+            <input type="tel" id="userPhone" required class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Age</label>
+            <input
+              type="number"
+              id="userAge"
+              min="1"
+              max="120"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Gender</label>
+            <select id="userGender" class="form-input">
+              <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+            <select id="userStatus" class="form-input">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Blood Type</label>
+            <select id="userBloodType" class="form-input">
+              <option value="">Select</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label>Address</label>
+            <textarea id="userAddress" class="form-input" rows="3"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Save User</button>
+            <button
+              type="button"
+              class="btn-secondary"
+              onclick="closeUserModal()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Add Test Modal -->
+    <div id="testModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeTestModal()">&times;</span>
+        <h2>Add New Test</h2>
+        <form id="testForm" class="form-grid">
+          <input type="hidden" id="testId" />
+
+          <div class="form-group">
+            <label>Test Name *</label>
+            <input type="text" id="testName" required class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label>Price (₹) *</label>
+            <input
+              type="number"
+              id="testPrice"
+              required
+              min="0"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Popularity (0-100)</label>
+            <input
+              type="number"
+              id="testPopularity"
+              min="0"
+              max="100"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group full-width">
+            <label>Description</label>
+            <textarea
+              id="testDescription"
+              class="form-input"
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Save Test</button>
+            <button
+              type="button"
+              class="btn-secondary"
+              onclick="closeTestModal()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- User Detail Modal -->
+    <div id="userDetailModal" class="modal">
+      <div class="modal-content modal-large">
+        <span class="close" onclick="closeUserDetailModal()">&times;</span>
+        <h2>User Details</h2>
+        <div id="userDetailContent">
+          <!-- User details will be loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <script src="api-config.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="hi" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Sign Up — GAURAVI iHEALTH DIAGNOSTICS</title>
+    <meta
+      name="description"
+      content="Create your GAURAVI iHEALTH DIAGNOSTICS account to book lab tests faster."
+    />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Minimal page-specific overrides (kept small) */
+      .auth-wrapper {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+
+  <body class="auth-wrapper" data-ab-variant="A">
+    <!-- Accessibility skip link -->
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- HEADER -->
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a
+          class="brand"
+          href="/"
+          aria-label="GAURAVI iHEALTH DIAGNOSTICS — Home"
+        >
+          GAURAVI iHEALTH DIAGNOSTICS
+        </a>
+
+        <nav class="primary" role="navigation" aria-label="Primary navigation">
+          <ul class="nav-list" role="menubar">
+            <li role="none"></li>
+            <li role="none"></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a class="ghost small" href="login.html">Login</a>
+        </div>
+      </div>
+
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <ol class="container breadcrumb-list"></ol>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main id="main" class="container auth-main" role="main">
+      <section class="card auth-card" aria-labelledby="signupHeading">
+        <h1 id="signupHeading">Create your account</h1>
+        <p class="muted small auth-subtitle">
+          Fast booking, saved details, aur reports ek hi jagah par.
+        </p>
+
+        <ul class="auth-benefits">
+          <li>Previous patient details auto-fill</li>
+          <li>Report history anytime, anywhere</li>
+          <li>Faster home sample collection booking</li>
+        </ul>
+
+        <!-- Error summary (JS se fill karein) -->
+        <section
+          id="signupErrors"
+          class="form-errors muted small"
+          role="alert"
+          aria-live="assertive"
+          hidden
+        ></section>
+
+        <form
+          id="signupForm"
+          class="booking-form"
+          method="post"
+          action="/api/signup"
+          novalidate
+        >
+          <input type="hidden" name="csrf_token" value="{{CSRF_TOKEN}}" />
+
+          <!-- Name -->
+          <label for="signupName">Full name</label>
+          <input
+            id="signupName"
+            name="name"
+            type="text"
+            required
+            minlength="3"
+            autocomplete="name"
+            placeholder="Ram Kumar"
+            aria-required="true"
+          />
+
+          <span
+            class="field-error"
+            id="error-name"
+            aria-live="polite"
+            hidden
+          ></span>
+
+          <!-- Phone + Email -->
+          <div class="grid-2">
+            <div>
+              <label for="signupPhone">Mobile number</label>
+              <input
+                id="signupPhone"
+                name="phone"
+                type="tel"
+                pattern="^[6-9]\\d{9}$"
+                inputmode="tel"
+                required
+                autocomplete="tel-national"
+                placeholder="9876543210"
+                aria-describedby="signupPhoneHelp"
+              />
+              <span
+                class="field-error"
+                id="error-phone"
+                aria-live="polite"
+                hidden
+              ></span>
+              <p id="signupPhoneHelp" class="muted small">
+                10-digit Indian mobile number.
+              </p>
+            </div>
+            <div>
+              <label for="signupEmail">Email (optional)</label>
+              <input
+                id="signupEmail"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="email@domain.com"
+              />
+              <span
+                class="field-error"
+                id="error-email"
+                aria-live="polite"
+                hidden
+              ></span>
+            </div>
+          </div>
+
+          <!-- Passwords -->
+          <div class="grid-2">
+            <div>
+              <label for="signupPassword">Password</label>
+              <input
+                id="signupPassword"
+                name="password"
+                type="password"
+                required
+                minlength="6"
+                autocomplete="new-password"
+                placeholder="Min 6 characters"
+                aria-describedby="passwordHelp"
+              />
+              <span
+                class="field-error"
+                id="error-password"
+                aria-live="polite"
+                hidden
+              ></span>
+            </div>
+            <div>
+              <label for="signupConfirmPassword">Confirm password</label>
+              <input
+                id="signupConfirmPassword"
+                name="confirmPassword"
+                type="password"
+                required
+                minlength="6"
+                autocomplete="new-password"
+                placeholder="Re-enter password"
+              />
+              <span
+                class="field-error"
+                id="error-confirmPassword"
+                aria-live="polite"
+                hidden
+              ></span>
+            </div>
+          </div>
+          <p id="passwordHelp" class="muted small">
+            Use a strong password: mix of letters, numbers aur symbols.
+          </p>
+
+          <!-- Village -->
+          <label for="signupCity">Village</label>
+          <select id="signupCity" name="city" autocomplete="address-level2">
+            <option value="">Select Village</option>
+            <option>Adlur</option>
+            <option>Admalwadi</option>
+            <option>Akharga</option>
+            <option>Ambulga Bk.</option>
+            <option>Ambulga Kh.</option>
+            <option>Andegaon</option>
+            <option>Andegaonwadi</option>
+            <option>Aural</option>
+            <option>Bamni</option>
+            <option>Bapshetwadi</option>
+            <option>Barhali</option>
+            <option>Bavanwadi</option>
+            <option>Bawalgaon</option>
+            <option>Bennal</option>
+            <option>Berli Bk.</option>
+            <option>Berli Kh.</option>
+            <option>Betmogra</option>
+            <option>Bhagnurwadi</option>
+            <option>Bhaswadi</option>
+            <option>Bhatapur P. D.</option>
+            <option>Bhatapur P. Mu.</option>
+            <option>Bhavani Tanda</option>
+            <option>Bhendegaon Bk.</option>
+            <option>Bhendegaon Kh.</option>
+            <option>Bhingoli</option>
+            <option>Billali</option>
+            <option>Bomnali</option>
+            <option>Borgaon</option>
+            <option>Chandola</option>
+            <option>Chandola Tanda</option>
+            <option>Chavhanwadi</option>
+            <option>Chinchalwadi</option>
+            <option>Chinchgaon</option>
+            <option>Chivli</option>
+            <option>Chondi</option>
+            <option>Dabka Raja</option>
+            <option>Dapka Gundopant</option>
+            <option>Degaon</option>
+            <option>Dhamangaon</option>
+            <option>Dhanaj</option>
+            <option>Dongargaon</option>
+            <option>Dornali</option>
+            <option>Eklara</option>
+            <option>Futtala Tanda</option>
+            <option>Gadgyalwadi</option>
+            <option>Gojegaon</option>
+            <option>Gonegaon</option>
+            <option>Halni</option>
+            <option>Hangarga Kh.</option>
+            <option>Hangarga P. K.</option>
+            <option>Hasnal</option>
+            <option>Hatral</option>
+            <option>Hibbat</option>
+            <option>Hippalnari</option>
+            <option>Hipparga</option>
+            <option>Hiranagar</option>
+            <option>Hokarna</option>
+            <option>Hondala</option>
+            <option>Honwadaj</option>
+            <option>Indiranagar</option>
+            <option>Itgyal P. D.</option>
+            <option>Itgyal P. Mu.</option>
+            <option>Jahur</option>
+            <option>Jamb Bk.</option>
+            <option>Jamb Kh.</option>
+            <option>Jambhali</option>
+            <option>Jamkhed</option>
+            <option>Jirga</option>
+            <option>Junna</option>
+            <option>Kabnur</option>
+            <option>Kalambar</option>
+            <option>Kamjalga</option>
+            <option>Kamlewadi</option>
+            <option>Kaparwadi</option>
+            <option>Karna</option>
+            <option>Kerur</option>
+            <option>Khairka</option>
+            <option>Khapral</option>
+            <option>Kharab Khandgaon</option>
+            <option>Khatgaon P. D.</option>
+            <option>Khatgaon P. Mu.</option>
+            <option>Kolgaon</option>
+            <option>Kolnur</option>
+            <option>Kotgyal</option>
+            <option>Kotgyalwadi</option>
+            <option>Krushnawadi</option>
+            <option>Kundral</option>
+            <option>Ladga</option>
+            <option>Lakhmapur</option>
+            <option>Lingapur</option>
+            <option>Lonal</option>
+            <option>Makni</option>
+            <option>Mandlapur</option>
+            <option>Mangyal</option>
+            <option>Manjari</option>
+            <option>Marajwadi</option>
+            <option>Mavali</option>
+            <option>Methi</option>
+            <option>Motarga</option>
+            <option>Mukhed Khede</option>
+            <option>Mukramabad</option>
+            <option>Nagral</option>
+            <option>Nandgaon P. D.</option>
+            <option>Nandgaon P. K.</option>
+            <option>Nivali</option>
+            <option>Paismal</option>
+            <option>Pakhandewadi</option>
+            <option>Pala</option>
+            <option>Palaswadi</option>
+            <option>Pandurni</option>
+            <option>Paratpur</option>
+            <option>Pimpalkuntha</option>
+            <option>Rajura Bk.</option>
+            <option>Rajura Kh.</option>
+            <option>Rathodwadi</option>
+            <option>Ratna Tanda</option>
+            <option>Ravangaon</option>
+            <option>Ravankola</option>
+            <option>Ravi</option>
+            <option>Saknur</option>
+            <option>Salagara Bk.</option>
+            <option>Salagara Kh.</option>
+            <option>Sangvi Benak</option>
+            <option>Sangvi Bhadev</option>
+            <option>Savarmal</option>
+            <option>Sawali</option>
+            <option>Sawargaon</option>
+            <option>Sawargaonwadi</option>
+            <option>Shelkewadi</option>
+            <option>Shikara</option>
+            <option>Shirur</option>
+            <option>Sugaon</option>
+            <option>Tagyal</option>
+            <option>Tandli</option>
+            <option>Tardarwadi</option>
+            <option>Thana</option>
+            <option>Thotwadi</option>
+            <option>Tupdal Bk.</option>
+            <option>Tupdal Kh.</option>
+            <option>Uchchha Bk.</option>
+            <option>Umardari</option>
+            <option>Undri P. D.</option>
+            <option>Undri P. M.</option>
+            <option>Vasantnagar</option>
+            <option>Wadgaon</option>
+            <option>Walanki</option>
+            <option>Wandgir</option>
+            <option>Wartala</option>
+            <option>Wasur</option>
+            <option>Yevti</option>
+          </select>
+          <span
+            class="field-error"
+            id="error-city"
+            aria-live="polite"
+            hidden
+          ></span>
+
+          <!-- Marketing opt-in -->
+          <div class="small muted" style="margin-top: 0.6rem">
+            <label>
+              <input type="checkbox" name="marketingOptIn" />
+              Mujhe health tips aur offers WhatsApp / SMS par bhejna theek hai.
+            </label>
+          </div>
+
+          <!-- Terms -->
+          <p class="muted small" style="margin-top: 0.6rem">
+            Sign up karke aap hamare
+            <a href="/terms" target="_blank" rel="noopener">terms</a> aur
+            <a href="/privacy" target="_blank" rel="noopener">privacy policy</a>
+            se sahmat hote hain.
+          </p>
+
+          <div
+            class="form-actions"
+            style="
+              margin-top: 0.85rem;
+              display: flex;
+              gap: 0.5rem;
+              flex-wrap: wrap;
+            "
+          >
+            <button type="submit" class="btn" id="signupBtn">
+              <span class="btn-label">Create account</span>
+              <span class="spinner hidden" id="signupSpinner" aria-hidden="true"
+                >⏳</span
+              >
+            </button>
+            <a href="login.html" class="ghost small">
+              Already have an account? Login
+            </a>
+          </div>
+        </form>
+
+        <p class="auth-footer-text muted small">
+          This is a demo signup UI. Actual OTP, verification aur backend
+          integration baad me connect karna hoga.
+        </p>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container muted small">
+        © <time datetime="2025">2025</time> GAURAVI iHEALTH DIAGNOSTICS — All
+        rights reserved.
+      </div>
+    </footer>
+
+    <style>
+      .field-error {
+        color: #b00020;
+        font-size: 0.85rem;
+        margin-top: 0.18rem;
+        display: block;
+      }
+      .btn.loading {
+        opacity: 0.9;
+        pointer-events: none;
+      }
+      .btn .spinner {
+        display: inline-block;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+      }
+      .btn .spinner.hidden {
+        display: none;
+      }
+      input.invalid,
+      select.invalid {
+        outline: 2px solid rgba(184, 28, 28, 0.12);
+      }
+    </style>
+
+    <script>
+      (function () {
+        const form = document.getElementById("signupForm");
+        if (!form) return;
+        const globalErrors = document.getElementById("signupErrors");
+        const submitBtn = document.getElementById("signupBtn");
+        const spinner = document.getElementById("signupSpinner");
+
+        function setFieldError(name, msg) {
+          const el = document.getElementById("error-" + name);
+          const fld = form.elements[name];
+          if (el) {
+            if (msg) {
+              el.hidden = false;
+              el.textContent = msg;
+            } else {
+              el.hidden = true;
+              el.textContent = "";
+            }
+          }
+          if (fld) {
+            if (msg) fld.classList.add("invalid");
+            else fld.classList.remove("invalid");
+          }
+        }
+
+        function clearFieldErrors() {
+          [
+            "name",
+            "phone",
+            "email",
+            "password",
+            "confirmPassword",
+            "city",
+          ].forEach((n) => setFieldError(n, ""));
+          if (globalErrors) {
+            globalErrors.hidden = true;
+            globalErrors.textContent = "";
+          }
+        }
+
+        function showGlobalError(msg) {
+          if (globalErrors) {
+            globalErrors.hidden = false;
+            globalErrors.textContent = msg;
+          }
+        }
+
+        function validateValues(values) {
+          if (!values.name || values.name.trim().length < 3)
+            return {
+              field: "name",
+              msg: "Please enter your full name (min 3 characters)",
+            };
+          if (!/^[6-9]\d{9}$/.test(String(values.phone || "").trim()))
+            return {
+              field: "phone",
+              msg: "Enter a valid 10-digit Indian mobile number",
+            };
+          if (!values.password || values.password.length < 6)
+            return {
+              field: "password",
+              msg: "Password must be at least 6 characters",
+            };
+          if (values.password !== values.confirmPassword)
+            return { field: "confirmPassword", msg: "Passwords do not match" };
+          if (values.email && !/^\S+@\S+\.\S+$/.test(values.email))
+            return { field: "email", msg: "Enter a valid email address" };
+          return null;
+        }
+
+        form.addEventListener(
+          "submit",
+          async function (ev) {
+            // capture the submission early and stop other handlers
+            ev.preventDefault();
+            ev.stopImmediatePropagation();
+            clearFieldErrors();
+
+            const data = {
+              name: form.name.value.trim(),
+              phone: form.phone.value.trim(),
+              email:
+                form.email && form.email.value ? form.email.value.trim() : "",
+              password: form.password.value,
+              confirmPassword: form.confirmPassword.value,
+              city: form.city
+                ? form.city.value
+                : form.signupCity
+                  ? form.signupCity.value
+                  : "",
+              marketingOptIn:
+                !!form.marketingOptIn && form.marketingOptIn.checked,
+            };
+
+            const v = validateValues(data);
+            if (v) {
+              setFieldError(v.field, v.msg);
+              (form.elements[v.field] || form).focus();
+              return;
+            }
+
+            if (submitBtn) {
+              submitBtn.classList.add("loading");
+            }
+            if (spinner) {
+              spinner.classList.remove("hidden");
+            }
+
+            try {
+              const res = await fetch("/api/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              });
+              const json = await res.json().catch(() => ({}));
+              if (!res.ok) {
+                const err =
+                  json && json.error
+                    ? json.error
+                    : "Signup failed (HTTP " + res.status + ")";
+                // map common server messages to fields
+                if (/phone/i.test(err)) {
+                  setFieldError("phone", err);
+                  (form.phone || form).focus();
+                } else if (/email/i.test(err)) {
+                  setFieldError("email", err);
+                  (form.email || form).focus();
+                } else showGlobalError(err);
+                return;
+              }
+
+              // success
+              if (submitBtn)
+                submitBtn.querySelector(".btn-label").textContent =
+                  "Account created";
+              setTimeout(() => {
+                window.location.href = "login.html";
+              }, 800);
+            } catch (e) {
+              showGlobalError(
+                "Network error: " +
+                  (e && e.message ? e.message : "Please try again"),
+              );
+            } finally {
+              if (submitBtn) {
+                submitBtn.classList.remove("loading");
+              }
+              if (spinner) {
+                spinner.classList.add("hidden");
+              }
+            }
+          },
+          { capture: true },
+        );
+      })();
+    </script>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
