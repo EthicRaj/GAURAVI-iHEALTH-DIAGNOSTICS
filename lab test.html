@@ -377,35 +377,310 @@
       <!-- SPLIT LAYOUT -->
       
       <section class="split-layout" id="book">
-        <!-- LEFT: Filters + Tests -->
+        <!-- LEFT: Health Packages + Tests -->
         <div class="content-col">
-          <div class="toolbar card" role="region" aria-label="Filters">
-            <div class="flex-row">
-              <label for="filterCategory" class="sr-only"
-          >Filter by category</label
-              >
-              <select id="filterCategory" aria-label="Filter by category">
-          <option value="all">All categories</option>
-          <option value="blood">Blood Tests</option>
-          <option value="panels">Panels</option>
-          <option value="imaging">Imaging</option>
-          <option value="rapid">Rapid / Fever</option>
-          <option value="special">Advanced / Cancer</option>
-              </select>
-
-              <label for="priceRange" class="sr-only">Filter by price</label>
-              <select id="priceRange" aria-label="Filter by price">
-          <option value="any">All Price Ranges</option>
-          <option value="0-499">Below ₹500</option>
-          <option value="500-999">₹500 - ₹999</option>
-          <option value="1000+">₹1000+</option>
-              </select>
-
-              <div id="searchStatus" class="muted small" aria-live="polite">
-          Showing popular tests
+          <!-- HEALTH PACKAGES SECTION -->
+          <section class="health-packages" aria-labelledby="packagesHeading">
+            <div class="packages-header">
+              <h2 id="packagesHeading">Complete Health Checkup Packages</h2>
+              <p>Affordable Preventive Health Screening Plans</p>
+            </div>
+            
+            <!-- Wellness Packages -->
+            <div class="package-type-label">Wellness Packages</div>
+            <div class="packages-grid">
+              <!-- Wellness Basic -->
+              <article class="package-card" data-package-id="wellness-basic">
+                <span class="discount-ribbon">50% OFF</span>
+                <div class="test-count-badge">
+                  <span class="count">39</span>
+                  <span class="label">TESTS</span>
+                </div>
+                <h3 class="package-name">WELLNESS BASIC</h3>
+                <p class="package-subtitle">Essential Health Checkup</p>
+                <div class="tests-included">
+                  <h4>Key Tests</h4>
+                  <ul class="tests-list">
+                    <li>Complete Blood Count (CBC)</li>
+                    <li>Kidney Profile (7 parameters)</li>
+                    <li>Liver Function Test (12 parameters)</li>
+                    <li>Thyroid Profile (T3, T4, TSH)</li>
+                    <li>Lipid Profile (9 parameters)</li>
+                    <li>Iron Profile (3 parameters)</li>
+                    <li>C-Reactive Protein (CRP)</li>
+                  </ul>
+                </div>
+                <p class="package-note">✓ Recommended for annual routine checkup</p>
+                <div class="price-section">
+                  <span class="original-price">₹1200</span>
+                  <span class="final-price"><span class="currency">₹</span>599</span>
+                </div>
+                <div class="savings">You Save ₹601</div>
+                <div class="package-actions">
+                  <button type="button" class="book-now-btn">Book Now</button>
+                  <a href="#" class="view-details-link">View Full Details</a>
+                </div>
+              </article>
+              
+              <!-- Wellness Advance -->
+              <article class="package-card" data-package-id="wellness-advance">
+                <span class="discount-ribbon">55% OFF</span>
+                <div class="test-count-badge">
+                  <span class="count">65</span>
+                  <span class="label">TESTS</span>
+                </div>
+                <span class="popular-badge">Most Popular</span>
+                <h3 class="package-name">WELLNESS ADVANCE</h3>
+                <p class="package-subtitle">Comprehensive Health Screening</p>
+                <div class="tests-included">
+                  <h4>Includes All Basic Tests +</h4>
+                  <ul class="tests-list">
+                    <li>HbA1c (Diabetes Monitoring)</li>
+                    <li>Vitamin D (25-OH)</li>
+                    <li>Vitamin B12</li>
+                    <li>Blood Sugar Fasting</li>
+                    <li>Urine Routine & Microscopy</li>
+                    <li>Electrolytes Panel</li>
+                    <li>Extended Kidney Profile</li>
+                  </ul>
+                </div>
+                <div class="price-section">
+                  <span class="original-price">₹2000</span>
+                  <span class="final-price"><span class="currency">₹</span>899</span>
+                </div>
+                <div class="savings">You Save ₹1101</div>
+                <div class="package-actions">
+                  <button type="button" class="book-now-btn">Book Now</button>
+                  <a href="#" class="view-details-link">View Full Details</a>
+                </div>
+              </article>
+              
+              <!-- Wellness Premium -->
+              <article class="package-card premium" data-package-id="wellness-premium">
+                <span class="discount-ribbon">60% OFF</span>
+                <div class="test-count-badge" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                  <span class="count">90</span>
+                  <span class="label">TESTS</span>
+                </div>
+                <h3 class="package-name">WELLNESS PREMIUM</h3>
+                <p class="package-subtitle">Complete Executive Health Checkup</p>
+                <div class="tests-included">
+                  <h4>Includes All Advance Tests +</h4>
+                  <ul class="tests-list">
+                    <li>Testosterone Total</li>
+                    <li>hs-CRP (High Sensitivity)</li>
+                    <li>Amylase & Lipase</li>
+                    <li>Detailed Iron Studies</li>
+                    <li>Extended Liver Panel</li>
+                    <li>Full Metabolic Panel</li>
+                    <li>Hormonal Analysis</li>
+                  </ul>
+                </div>
+                <div class="price-section">
+                  <span class="original-price">₹3000</span>
+                  <span class="final-price"><span class="currency">₹</span>1199</span>
+                </div>
+                <div class="savings">You Save ₹1801</div>
+                <div class="package-actions">
+                  <button type="button" class="book-now-btn">Book Now</button>
+                  <a href="#" class="view-details-link">View Full Details</a>
+                </div>
+              </article>
+            </div>
+            
+            <!-- Fitness Packages -->
+            <div class="fitness-section">
+              <div class="package-type-label" style="margin-top: 1rem;">Fitness Packages</div>
+              <div class="fitness-grid">
+                <!-- HY Fitness 1 -->
+                <article class="package-card" data-package-id="hy-fitness-1">
+                  <span class="discount-ribbon">40% OFF</span>
+                  <div class="test-count-badge">
+                    <span class="count">45</span>
+                    <span class="label">TESTS</span>
+                  </div>
+                  <h3 class="package-name">HY FITNESS 1</h3>
+                  <p class="package-subtitle">General Fitness Screening</p>
+                  <div class="tests-included">
+                    <h4>Key Tests</h4>
+                    <ul class="tests-list">
+                      <li>Complete Blood Count</li>
+                      <li>Blood Sugar Fasting</li>
+                      <li>Liver Function Test</li>
+                      <li>Kidney Function Test</li>
+                      <li>Thyroid Profile</li>
+                      <li>Lipid Profile</li>
+                    </ul>
+                  </div>
+                  <div class="price-section">
+                    <span class="original-price">₹1500</span>
+                    <span class="final-price"><span class="currency">₹</span>899</span>
+                  </div>
+                  <div class="savings">You Save ₹601</div>
+                  <div class="package-actions">
+                    <button type="button" class="book-now-btn">Book Now</button>
+                    <a href="#" class="view-details-link">View Full Details</a>
+                  </div>
+                </article>
+                
+                <!-- HY Fitness 2 -->
+                <article class="package-card" data-package-id="hy-fitness-2">
+                  <span class="discount-ribbon">50% OFF</span>
+                  <div class="test-count-badge">
+                    <span class="count">65</span>
+                    <span class="label">TESTS</span>
+                  </div>
+                  <h3 class="package-name">HY FITNESS 2</h3>
+                  <p class="package-subtitle">Cardiac & Metabolic Health</p>
+                  <div class="tests-included">
+                    <h4>Key Tests</h4>
+                    <ul class="tests-list">
+                      <li>Blood Sugar & HbA1c</li>
+                      <li>Lipid Profile</li>
+                      <li>Liver & Kidney Profile</li>
+                      <li>Thyroid Profile</li>
+                      <li>CRP Inflammatory Marker</li>
+                      <li>ECG</li>
+                    </ul>
+                  </div>
+                  <div class="price-section">
+                    <span class="original-price">₹2000</span>
+                    <span class="final-price"><span class="currency">₹</span>999</span>
+                  </div>
+                  <div class="savings">You Save ₹1001</div>
+                  <div class="package-actions">
+                    <button type="button" class="book-now-btn">Book Now</button>
+                    <a href="#" class="view-details-link">View Full Details</a>
+                  </div>
+                </article>
+                
+                <!-- HY Fitness 3 -->
+                <article class="package-card" data-package-id="hy-fitness-3">
+                  <span class="discount-ribbon">60% OFF</span>
+                  <div class="test-count-badge">
+                    <span class="count">90</span>
+                    <span class="label">TESTS</span>
+                  </div>
+                  <h3 class="package-name">HY FITNESS 3</h3>
+                  <p class="package-subtitle">Advanced Preventive Screening</p>
+                  <div class="tests-included">
+                    <h4>Key Tests</h4>
+                    <ul class="tests-list">
+                      <li>Complete Diabetes Panel</li>
+                      <li>Extended Lipid Profile</li>
+                      <li>Vitamin D & B12</li>
+                      <li>CRP & Thyroid</li>
+                      <li>Full Liver & Kidney</li>
+                      <li>ECG</li>
+                    </ul>
+                  </div>
+                  <div class="price-section">
+                    <span class="original-price">₹3000</span>
+                    <span class="final-price"><span class="currency">₹</span>1199</span>
+                  </div>
+                  <div class="savings">You Save ₹1801</div>
+                  <div class="package-actions">
+                    <button type="button" class="book-now-btn">Book Now</button>
+                    <a href="#" class="view-details-link">View Full Details</a>
+                  </div>
+                </article>
+                
+                <!-- HY Fitness Pro -->
+                <article class="package-card" data-package-id="hy-fitness-pro">
+                  <span class="discount-ribbon">55% OFF</span>
+                  <div class="test-count-badge">
+                    <span class="count">100</span>
+                    <span class="label">TESTS</span>
+                  </div>
+                  <h3 class="package-name">HY FITNESS PRO</h3>
+                  <p class="package-subtitle">Hormonal + Vitamin + Thyroid + Cardiac</p>
+                  <div class="tests-included">
+                    <h4>Key Tests</h4>
+                    <ul class="tests-list">
+                      <li>Complete Metabolic Panel</li>
+                      <li>Hormonal Profile</li>
+                      <li>Vitamin D & B12</li>
+                      <li>Thyroid (T3, T4, TSH)</li>
+                      <li>Cardiac Markers</li>
+                      <li>Testosterone</li>
+                    </ul>
+                  </div>
+                  <div class="price-section">
+                    <span class="original-price">₹3500</span>
+                    <span class="final-price"><span class="currency">₹</span>1575</span>
+                  </div>
+                  <div class="savings">You Save ₹1925</div>
+                  <div class="package-actions">
+                    <button type="button" class="book-now-btn">Book Now</button>
+                    <a href="#" class="view-details-link">View Full Details</a>
+                  </div>
+                </article>
+                
+                <!-- HY Fitness Elite -->
+                <article class="package-card" data-package-id="hy-fitness-elite">
+                  <span class="discount-ribbon">60% OFF</span>
+                  <div class="test-count-badge">
+                    <span class="count">110</span>
+                    <span class="label">TESTS</span>
+                  </div>
+                  <h3 class="package-name">HY FITNESS ELITE</h3>
+                  <p class="package-subtitle">Full Body + Diabetes + Liver + Kidney + Vitamin + CRP</p>
+                  <div class="tests-included">
+                    <h4>Key Tests</h4>
+                    <ul class="tests-list">
+                      <li>Complete Blood Picture</li>
+                      <li>Diabetes Panel (F, PP, HbA1c)</li>
+                      <li>Extended Liver Function</li>
+                      <li>Complete Kidney Profile</li>
+                      <li>Vitamins D, B12</li>
+                      <li>CRP & hs-CRP</li>
+                    </ul>
+                  </div>
+                  <div class="price-section">
+                    <span class="original-price">₹4500</span>
+                    <span class="final-price"><span class="currency">₹</span>1799</span>
+                  </div>
+                  <div class="savings">You Save ₹2701</div>
+                  <div class="package-actions">
+                    <button type="button" class="book-now-btn">Book Now</button>
+                    <a href="#" class="view-details-link">View Full Details</a>
+                  </div>
+                </article>
+                
+                <!-- HY Fitness Ultimate -->
+                <article class="package-card premium" data-package-id="hy-fitness-ultimate">
+                  <span class="discount-ribbon">65% OFF</span>
+                  <div class="test-count-badge" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                    <span class="count">125</span>
+                    <span class="label">TESTS</span>
+                  </div>
+                  <span class="gold-badge">Premium</span>
+                  <h3 class="package-name">HY FITNESS ULTIMATE</h3>
+                  <p class="package-subtitle">Complete Executive Health Checkup Panel</p>
+                  <div class="tests-included">
+                    <h4>Key Tests</h4>
+                    <ul class="tests-list">
+                      <li>Complete Executive Panel</li>
+                      <li>Full Diabetes Management</li>
+                      <li>Extended Cardiac Screen</li>
+                      <li>Complete Hormonal Panel</li>
+                      <li>All Vitamins (D, B12)</li>
+                      <li>Electrolytes & More</li>
+                    </ul>
+                  </div>
+                  <div class="price-section">
+                    <span class="original-price">₹6000</span>
+                    <span class="final-price"><span class="currency">₹</span>2099</span>
+                  </div>
+                  <div class="savings">You Save ₹3901</div>
+                  <div class="package-actions">
+                    <button type="button" class="book-now-btn">Book Now</button>
+                    <a href="#" class="view-details-link">View Full Details</a>
+                  </div>
+                </article>
               </div>
             </div>
-          </div>
+          </section>
 
           <section
             id="tests"
@@ -911,6 +1186,7 @@
     <!-- API Configuration and App script -->
     <script src="api-config.js"></script>
     <script src="app.js" defer></script>
+    <script src="packages.js" defer></script>
 
     <!-- Service worker registration (commented; implement sw.js then enable) -->
     <!--
